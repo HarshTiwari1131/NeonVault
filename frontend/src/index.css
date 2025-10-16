@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables for NeonVault Theme */
+:root {
+  --neon-green: #4ADE80;
+  --neon-blue: #3B82F6;
+  --bg-dark: #0D1117;
+  --panel-dark: #161B22;
+  --text-light: #E5E7EB;
+  --text-muted: #9CA3AF;
+  --border: #30363D;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--panel-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22C55E;
+}
+
+/* Glassmorphism Effect */
+.glassmorphism {
+  background: rgba(22, 27, 34, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+/* Neon Button Base */
+.neon-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.neon-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(74, 222, 128, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.neon-button:hover::before {
+  left: 100%;
+}
+
+/* Loading Animation */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Holographic Loading */
+.holographic-pulse {
+  background: linear-gradient(
+    45deg,
+    rgba(74, 222, 128, 0.1),
+    rgba(59, 130, 246, 0.1),
+    rgba(74, 222, 128, 0.1)
+  );
+  background-size: 200% 200%;
+  animation: holographic 3s ease infinite;
+}
+
+@keyframes holographic {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Progress Ring */
+.progress-ring {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Animated Border */
+.animated-border {
+  position: relative;
+  background: var(--panel-dark);
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* File Grid Animations */
+.file-grid-enter {
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+}
+
+.file-grid-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.file-grid-exit {
+  opacity: 1;
+}
+
+.file-grid-exit-active {
+  opacity: 0;
+  transform: scale(0.8) translateY(-20px);
+  transition: opacity 200ms, transform 200ms;
+}
+
+/* Scan Line Effect */
+.scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--neon-green),
+    transparent
+  );
+  animation: scan-line 2s linear infinite;
+}
+
+/* Toast Customization */
+.Toastify__toast {
+  background: var(--panel-dark) !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.Toastify__toast--success {
+  border-color: var(--neon-green) !important;
+}
+
+.Toastify__toast--error {
+  border-color: #EF4444 !important;
+}
+
+.Toastify__toast--warning {
+  border-color: #F59E0B !important;
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gradient {
+  border-image: linear-gradient(45deg, var(--neon-green), var(--neon-blue)) 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* Dark mode enhancements */
+.dark {
+  color-scheme: dark;
+}
+
+/* Focus styles for accessibility */
+.focus\:neon-outline:focus {
+  outline: 2px solid var(--neon-green);
+  outline-offset: 2px;
+}
