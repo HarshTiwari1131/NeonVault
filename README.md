@@ -11,7 +11,7 @@ A comprehensive intelligent file management and security system with ML-powered 
 
 ## 🌐 Live Demo
 
-[🎮 **View Live Demo**](https://neonvault-demo.vercel.app) | [📖 **API Documentation**](https://neonvault-api.herokuapp.com/docs)
+[🎮 **View Live Demo**](https://neon-vault-flax.vercel.app) | [📖 **API Documentation**]()
 
 ---
 
